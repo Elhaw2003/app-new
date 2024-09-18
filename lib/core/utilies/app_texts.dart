@@ -15,4 +15,9 @@ class AppTexts {
   static const String emailAddress = "Email Address";
   static const String phoneNumber = "Phone Number";
   static const String next = "Next";
+  static const String home = "Home";
+  static const String topics = "Topics";
+  static const String author = "Author";
+  static const String bookMark = "Bookmark";
+  static const String search = "Search";
 }

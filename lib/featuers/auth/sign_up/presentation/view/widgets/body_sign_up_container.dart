@@ -1,8 +1,12 @@
 import 'dart:developer';
 
+import 'package:app_new/featuers/auth/sign_up/presentation/controller/sign_up_cubit.dart';
+import 'package:app_new/featuers/auth/sign_up/presentation/controller/sign_up_states.dart';
+import 'package:app_new/featuers/fill_profile/presentation/view/fill_profile_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/utilies/app_colors.dart';
 import '../../../../../../core/utilies/app_images.dart';
@@ -25,10 +29,12 @@ class _BodySignUpContainerState extends State<BodySignUpContainer> {
 
   @override
 
+
   @override
   Widget build(BuildContext context) {
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
+    final TextEditingController confirmPassword = TextEditingController();
     return ListView(
       children: [
         Padding(
@@ -58,7 +64,7 @@ class _BodySignUpContainerState extends State<BodySignUpContainer> {
                 height: 15,
               ),
               CustomFormFieldPassword(
-                  passwordController: passwordController,
+                  passwordController: confirmPassword,
                   text: AppTexts.confirmPassword),
               const SizedBox(
                 height: 8,
@@ -88,34 +94,32 @@ class _BodySignUpContainerState extends State<BodySignUpContainer> {
               const SizedBox(
                 height: 30,
               ),
-              CustomButton(
-                onTap: () async {
-                  if (kDebugMode) {
-                    print("loading");
+              BlocConsumer<RegisterCubit,SignUpStates>(
+                listener: (context,state){
+                  if(state is SignUpFailureState){
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      backgroundColor: AppColors.black,
+                        content: Text(state.errorMessage,style: TextStyle(color: AppColors.blue,fontWeight: FontWeight.bold),)));
+                  }else if(state is SignUpSuccessState){
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (c){
+                      return FillProfileScreen();
+                    }));
                   }
-                  try {
-                    final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                      email: emailController.text.trim(),
-                      password: passwordController.text.trim(),
-                    );
-                    log("success");
-                    setState(() {
-
-                    });
-                  } on FirebaseAuthException catch (e) {
-                    if (e.code == 'weak-password') {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text("The password provided is too week")));
-                    } else if (e.code == 'email-already-in-use') {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text("The account already exists for that email.")));
-                    }
-                  } catch (e) {
-                    log(e.toString());
-                  }
-
                 },
-                title: AppTexts.signUp,
+                builder: (context,state) {
+                  return state is SignUpLoadingState? const Center(child: CircularProgressIndicator(
+                    color: AppColors.blue,
+                  )) :
+                  CustomButton(
+                    onTap: () {
+                      BlocProvider.of<RegisterCubit>(context).register(
+                          email: emailController.text.trim(),
+                          password: passwordController.text.trim(),
+                          context: context);
+                    },
+                    title: AppTexts.signUp,
+                  );
+                }
               ),
               const SizedBox(
                 height: 17,

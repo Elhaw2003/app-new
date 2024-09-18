@@ -52,6 +52,7 @@ class _CustomFormFieldPasswordState extends State<CustomFormFieldPassword> {
             children: [
               Expanded(
                 child: TextFormField(
+                  controller: widget.passwordController,
                   keyboardType: TextInputType.text,
                   style: const TextStyle(
                     color: AppColors.black,
@@ -65,7 +66,8 @@ class _CustomFormFieldPasswordState extends State<CustomFormFieldPassword> {
                   decoration: const InputDecoration(
                       contentPadding: EdgeInsets.all(8),
                       focusedBorder: InputBorder.none,
-                      enabledBorder: InputBorder.none),
+                      enabledBorder: InputBorder.none
+                  ),
                 ),
               ),
               InkWell(

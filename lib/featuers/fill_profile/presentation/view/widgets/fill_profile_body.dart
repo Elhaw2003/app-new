@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:app_new/featuers/home_page/presentation/view/home_page_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -102,7 +103,16 @@ class _FillProfileBodyState extends State<FillProfileBody> {
             const SizedBox(
               height: 280,
             ),
-            const CustomButton(title: AppTexts.next)
+             CustomButton(
+                onTap: (){
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (c){
+                    return HomePageScreen(
+                      photo: File(image!.path),
+                    );
+                  }));
+                },
+                title: AppTexts.next
+            )
           ],
         ),
       ),

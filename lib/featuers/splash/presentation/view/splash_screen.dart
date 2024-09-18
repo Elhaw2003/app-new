@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/utilies/app_colors.dart';
 import '../../../../core/utilies/app_images.dart';
 import '../../../auth/login/presentation/view/login_screen.dart';
+import '../../../fill_profile/presentation/view/fill_profile_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -21,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
       const Duration(seconds: 3),
       () {
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) {
-          return const LoginScreen();
+          return const FillProfileScreen();
         }));
       },
     );
