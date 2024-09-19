@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:app_new/featuers/auth/sign_up/presentation/view/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utilies/app_colors.dart';
@@ -22,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
       const Duration(seconds: 3),
       () {
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) {
-          return const FillProfileScreen();
+          return const SignUpScreen();
         }));
       },
     );
