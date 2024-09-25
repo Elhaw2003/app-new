@@ -23,7 +23,7 @@ class ItemWidget extends StatelessWidget {
               imageUrl: newModel.urlToImage != null && newModel.urlToImage!.isNotEmpty
                   ? newModel.urlToImage!
                   : 'https://via.placeholder.com/200',  // Fallback image URL
-              placeholder: (context, url) => Center(
+              placeholder: (context, url) => const Center(
                 child: CircularProgressIndicator(color: AppColors.blue),
               ),
               errorWidget: (context, url, error) => Icon(Icons.error_outlined),
@@ -45,7 +45,7 @@ class ItemWidget extends StatelessWidget {
         const SizedBox(height: 5,),
         Text(
             newModel.desc??"",
-          style: TextStyle(
+          style: const TextStyle(
               color: AppColors.ramady,
               fontWeight: FontWeight.w400,
               fontSize: 14
@@ -57,23 +57,24 @@ class ItemWidget extends StatelessWidget {
         Row(
           children: [
             Text(newModel.sourceModel.name??"",
-              style: TextStyle(
+              style: const TextStyle(
                   color: AppColors.ramady,
                   fontWeight: FontWeight.w600,
                   fontSize: 13
               ),
             ),
-            SizedBox(width: 12,),
+            SizedBox(width: 6,),
             Icon(Icons.date_range,color: AppColors.ramady,),
             SizedBox(width: 5,),
             Text(
                 convertDate(newModel.publishedAt),
-              style: TextStyle(
+              style: const TextStyle(
                   color: AppColors.ramady,
                   fontWeight: FontWeight.w400,
                   fontSize: 13
               ),
             ),
+            Spacer(),
             Expanded(
               child: IconButton(
                 alignment: Alignment.centerRight,

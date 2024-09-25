@@ -1,7 +1,7 @@
-import 'package:app_new/featuers/home_page/presentation/view/widget/home_widget/widget_in_home_widget/item_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../data/models/new_model.dart';
+import 'item_widget.dart';
 
 class ListViewForNewsWidget extends StatelessWidget {
   const ListViewForNewsWidget({super.key, required this.news});

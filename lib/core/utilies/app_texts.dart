@@ -20,4 +20,10 @@ class AppTexts {
   static const String author = "Author";
   static const String bookMark = "Bookmark";
   static const String search = "Search";
+  static const String entertainment = "entertainment";
+  static const String general = "general";
+  static const String health = "health";
+  static const String science = "science";
+  static const String sports = "sports";
+  static const String technology = "technology";
 }

@@ -1,10 +1,11 @@
 import 'package:app_new/core/utilies/app_colors.dart';
-import 'package:app_new/featuers/home_page/presentation/view/widget/home_widget/widget_in_home_widget/list_view_for_news_widget.dart';
 import 'package:app_new/featuers/search_news/presentation/controller/search_cubit.dart';
 import 'package:app_new/featuers/search_news/presentation/controller/search_states.dart';
 import 'package:app_new/featuers/search_news/presentation/view/widget/form_field_news.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../home_page/presentation/view/widget/home_widget/widgets_in_home_widget/list_view_for_news_widget.dart';
 
 class SearchBody extends StatelessWidget {
   const SearchBody({super.key});

@@ -1,12 +1,14 @@
 import 'package:app_new/core/utilies/app_colors.dart';
+import 'package:app_new/core/utilies/app_texts.dart';
+import 'package:app_new/featuers/home_page/presentation/controller/categories/category_cubit.dart';
 import 'package:app_new/featuers/home_page/presentation/controller/get_top_headline/get_top_headline_cubit.dart';
 import 'package:app_new/featuers/home_page/presentation/controller/get_top_headline/get_top_headline_state.dart';
+import 'package:app_new/featuers/home_page/presentation/view/widget/home_widget/widgets_in_home_widget/list_view_catigories_widget.dart';
+import 'package:app_new/featuers/home_page/presentation/view/widget/home_widget/widgets_in_home_widget/list_view_for_news_widget.dart';
+import 'package:app_new/featuers/home_page/presentation/view/widget/home_widget/widgets_in_home_widget/search_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'widget_in_home_widget/list_view_for_news_widget.dart';
-import 'widget_in_home_widget/search_container.dart';
 
 class HomeWidgetScreen extends StatefulWidget {
   const HomeWidgetScreen({super.key});
@@ -20,24 +22,28 @@ class _HomeWidgetScreenState extends State<HomeWidgetScreen> {
   void initState() {
     // TODO: implement initState
     BlocProvider.of<TopHeadLineCubit>(context).TopHeaLineFunc(
-      category: "technology"
+      category: AppTexts.sports
     );
   }
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return BlocProvider(
+  create: (context) => CategoryCubit(),
+  child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: RefreshIndicator(
         color: AppColors.blue,
         onRefresh: ()async{
           BlocProvider.of<TopHeadLineCubit>(context).TopHeaLineFunc(
-            category: "technology"
+            category: AppTexts.sports
           );
         },
         child: Column(
           children: [
             SizedBox(height: 24,),
             SearchContainer(),
+            SizedBox(height: 20,),
+            ListViewCatigoriesWidget(),
             SizedBox(height: 30,),
             BlocConsumer<TopHeadLineCubit,GetTopHeadlineState>(
               listener: (context, state) {
@@ -59,7 +65,7 @@ class _HomeWidgetScreenState extends State<HomeWidgetScreen> {
                         ),
                         onTap: (){
                           BlocProvider.of<TopHeadLineCubit>(context).TopHeaLineFunc(
-                            category: "technology"
+                            category: AppTexts.sports
                           );
                         },
                       ),
@@ -73,6 +79,7 @@ class _HomeWidgetScreenState extends State<HomeWidgetScreen> {
           ],
         ),
       ),
-    );
+    ),
+);
   }
 }
