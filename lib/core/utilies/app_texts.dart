@@ -26,4 +26,5 @@ class AppTexts {
   static const String science = "science";
   static const String sports = "sports";
   static const String technology = "technology";
+  static const String noItemsAddedInBookMark = "No Items Added In BookMark";
 }

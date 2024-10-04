@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomePageScreen extends StatefulWidget {
-   HomePageScreen({super.key, required this.photo});
+   const HomePageScreen({super.key, required this.photo});
   final File photo;
 
   @override
@@ -21,7 +21,7 @@ class HomePageScreen extends StatefulWidget {
 
 class _HomePageScreenState extends State<HomePageScreen> {
   int currentIndex = 0;
-  List<Widget> bodysList = [HomeWidgetScreen(),TopicsScreen(),AuthorScreen(),BookmarkScreen()];
+  List<Widget> bodysList = [const HomeWidgetScreen(),const TopicsScreen(),const AuthorScreen(),const BookmarkScreen()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,8 +59,8 @@ class _HomePageScreenState extends State<HomePageScreen> {
               icon: SvgPicture.asset(AppImages.authorActiveIcon),
               label:AppTexts.author
           ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.bookmark_border),
+          const BottomNavigationBarItem(
+              icon: Icon(Icons.bookmark),
               label:AppTexts.bookMark
           ),
         ],

@@ -1,7 +1,10 @@
 import 'package:app_new/core/utilies/app_colors.dart';
+import 'package:app_new/featuers/bookmark/presentation/controller/book_mark/book_mark_cubit.dart';
+import 'package:app_new/featuers/bookmark/presentation/controller/book_mark/book_mark_states.dart';
 import 'package:app_new/featuers/home_page/data/models/new_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class ItemWidget extends StatelessWidget {
@@ -9,6 +12,8 @@ class ItemWidget extends StatelessWidget {
   final NewModel newModel;
   @override
   Widget build(BuildContext context) {
+    return BlocBuilder<BookMarkCubit, BookMarkState>(
+  builder: (context, state) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -26,7 +31,7 @@ class ItemWidget extends StatelessWidget {
               placeholder: (context, url) => const Center(
                 child: CircularProgressIndicator(color: AppColors.blue),
               ),
-              errorWidget: (context, url, error) => Icon(Icons.error_outlined),
+              errorWidget: (context, url, error) => const Icon(Icons.error_outlined),
             ),
           ),
         ),
@@ -63,9 +68,9 @@ class ItemWidget extends StatelessWidget {
                   fontSize: 13
               ),
             ),
-            SizedBox(width: 6,),
-            Icon(Icons.date_range,color: AppColors.ramady,),
-            SizedBox(width: 5,),
+            const SizedBox(width: 6,),
+            const Icon(Icons.date_range,color: AppColors.ramady,),
+            const SizedBox(width: 5,),
             Text(
                 convertDate(newModel.publishedAt),
               style: const TextStyle(
@@ -74,24 +79,31 @@ class ItemWidget extends StatelessWidget {
                   fontSize: 13
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Expanded(
               child: IconButton(
                 alignment: Alignment.centerRight,
-                  onPressed: (){}, icon: Icon(Icons.bookmark_border,color: AppColors.ramady,),
+                  onPressed: (){
+                  BlocProvider.of<BookMarkCubit>(context).changeBookMark(newModel);
+                  },
+                icon:
+                 Icon(
+                   Icons.bookmark,
+                   color: newModel.bookMark? AppColors.blue : AppColors.greyOriginal,
+                 ),
               ),
             )
           ],
         )
       ],
     );
+  },
+);
   }
   String  convertDate(dateString ) {
     DateTime dateTime = DateTime.parse(dateString);
-
     String formattedDate = DateFormat('yyyy-MM-dd – kk:mm').format(dateTime);
     // Output: 2024-09-12 – 07:05
-
     return formattedDate;
   }
 }

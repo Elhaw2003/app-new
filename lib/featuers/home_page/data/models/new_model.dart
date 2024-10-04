@@ -9,6 +9,7 @@ class NewModel{
   final String? author;
 
   final SourceModel sourceModel;
+  bool bookMark;
 
   NewModel({
 
@@ -20,6 +21,7 @@ class NewModel{
     required this.publishedAt,
     required this.sourceModel,
     required this.author,
+    this.bookMark = false,
 
 });
 
