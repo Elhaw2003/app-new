@@ -13,7 +13,15 @@ class BookmarkScreen extends StatelessWidget {
     return BlocBuilder<BookMarkCubit, BookMarkState>(
       builder: (context, state) {
         return BlocProvider.of<BookMarkCubit>(context).bookMarks.isEmpty?
-            Center(child: Text(AppTexts.noItemsAddedInBookMark,style: TextStyle(fontSize: 20),))
+            const Center(
+                child: Text(
+                  AppTexts.noItemsAddedInBookMark,
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500
+                  ),
+                )
+            )
             : ListViewForNewsWidget(
             news: BlocProvider.of<BookMarkCubit>(context).bookMarks
         );

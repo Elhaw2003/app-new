@@ -48,7 +48,10 @@ class _HomePageScreenState extends State<HomePageScreen> {
         },
         items: [
           BottomNavigationBarItem(
-              icon: SvgPicture.asset(AppImages.homeActiveIcon),
+              icon: SvgPicture.asset(
+                  currentIndex == 0 ? AppImages.homeActiveIcon
+                      :AppImages.noActiveHomeIcon,
+              ),
               label:AppTexts.home
           ),
           BottomNavigationBarItem(

@@ -6,6 +6,7 @@ import 'package:app_new/featuers/home_page/presentation/controller/get_top_headl
 import 'package:app_new/featuers/home_page/presentation/view/widget/home_widget/widgets_in_home_widget/list_view_catigories_widget.dart';
 import 'package:app_new/featuers/home_page/presentation/view/widget/home_widget/widgets_in_home_widget/list_view_for_news_widget.dart';
 import 'package:app_new/featuers/home_page/presentation/view/widget/home_widget/widgets_in_home_widget/search_container.dart';
+import 'package:app_new/featuers/home_page/presentation/view/widget/item_widget_for_failure.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,11 +41,11 @@ class _HomeWidgetScreenState extends State<HomeWidgetScreen> {
         },
         child: Column(
           children: [
-            SizedBox(height: 24,),
-            SearchContainer(),
-            SizedBox(height: 20,),
+            const SizedBox(height: 24,),
+            const SearchContainer(),
+            const SizedBox(height: 20,),
             ListViewCatigoriesWidget(),
-            SizedBox(height: 30,),
+            const SizedBox(height: 30,),
             BlocConsumer<TopHeadLineCubit,GetTopHeadlineState>(
               listener: (context, state) {
                 if(state is GetTopHeadlineFailureState){
@@ -53,25 +54,9 @@ class _HomeWidgetScreenState extends State<HomeWidgetScreen> {
               builder: (context, state) {
                 return Expanded(
                   child: state is GetTopHeadlineLoadingState ?
-                  Center(child: CircularProgressIndicator(color: AppColors.blue,),)
+                  const Center(child: CircularProgressIndicator(color: AppColors.blue,),)
                       :state is GetTopHeadlineFailureState ?
-                  Column(
-                    children: [
-                      Text(state.errorMessage),
-                      SizedBox(height: 20,),
-                      GestureDetector(
-                        child: Container(
-                          child: Text("Try Again"),
-                        ),
-                        onTap: (){
-                          BlocProvider.of<TopHeadLineCubit>(context).TopHeaLineFunc(
-                            category: AppTexts.sports
-                          );
-                        },
-                      ),
-                    ],
-                    mainAxisAlignment: MainAxisAlignment.center,
-                  ):
+                  ItemWidgetForFailure(state: state.errorMessage):
                   ListViewForNewsWidget(news: BlocProvider.of<TopHeadLineCubit>(context).topHeadLines),
                 );
               }

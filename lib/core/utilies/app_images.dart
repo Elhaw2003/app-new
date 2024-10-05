@@ -7,5 +7,6 @@ class AppImages {
   static const String closeEye = ("assets/images/close_eye.png");
   static const String topicsActiveIcon = ("assets/svgs/topics_icon.svg");
   static const String homeActiveIcon = ("assets/svgs/home_icon.svg");
+  static const String noActiveHomeIcon = ("assets/svgs/no_active_home_icon.svg");
   static const String authorActiveIcon = ("assets/svgs/author_icon.svg");
 }

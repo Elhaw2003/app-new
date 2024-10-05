@@ -26,5 +26,9 @@ class AppTexts {
   static const String science = "science";
   static const String sports = "sports";
   static const String technology = "technology";
+  static const String tryAgain = "Try Again";
   static const String noItemsAddedInBookMark = "No Items Added In BookMark";
+  static const String gallery = "Gallery";
+  static const String camera = "Camera";
+  static const String select_Photo_name = "Select Photo ";
 }
