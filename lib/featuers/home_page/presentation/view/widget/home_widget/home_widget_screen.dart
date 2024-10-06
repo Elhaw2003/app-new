@@ -1,5 +1,6 @@
 import 'package:app_new/core/utilies/app_colors.dart';
 import 'package:app_new/core/utilies/app_texts.dart';
+import 'package:app_new/featuers/home_page/data/models/new_model.dart';
 import 'package:app_new/featuers/home_page/presentation/controller/categories/category_cubit.dart';
 import 'package:app_new/featuers/home_page/presentation/controller/get_top_headline/get_top_headline_cubit.dart';
 import 'package:app_new/featuers/home_page/presentation/controller/get_top_headline/get_top_headline_state.dart';
@@ -23,7 +24,8 @@ class _HomeWidgetScreenState extends State<HomeWidgetScreen> {
   void initState() {
     // TODO: implement initState
     BlocProvider.of<TopHeadLineCubit>(context).TopHeaLineFunc(
-      category: AppTexts.sports
+      category: AppTexts.sports,
+      index: 0,
     );
   }
   @override
@@ -36,7 +38,8 @@ class _HomeWidgetScreenState extends State<HomeWidgetScreen> {
         color: AppColors.blue,
         onRefresh: ()async{
           BlocProvider.of<TopHeadLineCubit>(context).TopHeaLineFunc(
-            category: AppTexts.sports
+            category: AppTexts.sports,
+            index: 0,
           );
         },
         child: Column(
@@ -52,12 +55,19 @@ class _HomeWidgetScreenState extends State<HomeWidgetScreen> {
                 }
               },
               builder: (context, state) {
+
+                int key = BlocProvider.of<CategoryCubit>(context).index;
+
+                List<NewModel> ? news= BlocProvider.of<TopHeadLineCubit>(context).mapForNews[key];
+
                 return Expanded(
-                  child: state is GetTopHeadlineLoadingState ?
+                  child: (state is GetTopHeadlineLoadingState && news ==null) ||
+                         state is GetTopHeadlineLoadingState && news!.isEmpty
+                      ?
                   const Center(child: CircularProgressIndicator(color: AppColors.blue,),)
                       :state is GetTopHeadlineFailureState ?
                   ItemWidgetForFailure(state: state.errorMessage):
-                  ListViewForNewsWidget(news: BlocProvider.of<TopHeadLineCubit>(context).topHeadLines),
+                  ListViewForNewsWidget(news: news!),
                 );
               }
               ),

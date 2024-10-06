@@ -9,8 +9,9 @@ class ListViewForNewsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+        physics: const BouncingScrollPhysics(),
         itemCount: news.length,
-        separatorBuilder: (context, index) => SizedBox(height: 30,),
+        separatorBuilder: (context, index) => const SizedBox(height: 30,),
         itemBuilder: (context, index) {
           return ItemWidget(newModel: news[index]);
         },

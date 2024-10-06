@@ -59,18 +59,18 @@ class ItemWidget extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         const SizedBox(height: 5,),
+        Text(newModel.sourceModel.name??"",
+          style: const TextStyle(
+              color: AppColors.ramady,
+              fontWeight: FontWeight.w600,
+              fontSize: 13
+          ),
+        ),
+        const SizedBox(height: 5,),
         Row(
           children: [
-            Text(newModel.sourceModel.name??"",
-              style: const TextStyle(
-                  color: AppColors.ramady,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 13
-              ),
-            ),
-            const SizedBox(width: 6,),
             const Icon(Icons.date_range,color: AppColors.ramady,),
-            const SizedBox(width: 5,),
+            const SizedBox(width: 10,),
             Text(
                 convertDate(newModel.publishedAt),
               style: const TextStyle(
@@ -80,18 +80,15 @@ class ItemWidget extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            Expanded(
-              child: IconButton(
-                alignment: Alignment.centerRight,
-                  onPressed: (){
-                  BlocProvider.of<BookMarkCubit>(context).changeBookMark(newModel);
-                  },
-                icon:
-                 Icon(
-                   Icons.bookmark,
-                   color: newModel.bookMark? AppColors.blue : AppColors.greyOriginal,
-                 ),
-              ),
+            IconButton(
+                onPressed: (){
+                BlocProvider.of<BookMarkCubit>(context).changeBookMark(newModel);
+                },
+              icon:
+               Icon(
+                 Icons.bookmark,
+                 color: newModel.bookMark? AppColors.blue : AppColors.greyOriginal,
+               ),
             )
           ],
         )

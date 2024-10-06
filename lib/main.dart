@@ -1,8 +1,7 @@
-import 'package:app_new/core/utilies/app_images.dart';
 import 'package:app_new/featuers/bookmark/presentation/controller/book_mark/book_mark_cubit.dart';
-import 'package:app_new/featuers/fill_profile/presentation/view/fill_profile_screen.dart';
 import 'package:app_new/featuers/home_page/data/repos/home_page_implementation_repo.dart';
 import 'package:app_new/featuers/home_page/presentation/controller/get_top_headline/get_top_headline_cubit.dart';
+import 'package:app_new/featuers/splash/presentation/view/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,7 +35,7 @@ class AppNew extends StatelessWidget {
         fontFamily: AppFonts.poppins,
       ),
       debugShowCheckedModeBanner: false,
-      home:  FillProfileScreen(),
+      home:  const SplashScreen(),
     );
   }
 }

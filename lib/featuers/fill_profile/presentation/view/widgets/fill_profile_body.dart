@@ -69,12 +69,12 @@ class FillProfileBody extends StatelessWidget {
                               )),
                         ),
                       ),
-                      const CircleAvatar(
+                      imageCubit.image == null?const CircleAvatar(
                         radius: 20,
                         foregroundColor: AppColors.white,
                         backgroundColor: AppColors.blue,
                         child: Icon(Icons.camera_alt_outlined),
-                      )
+                      ) :const Text("")
                     ],
                   ),
                 ),

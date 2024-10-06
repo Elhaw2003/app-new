@@ -1,10 +1,6 @@
-import 'dart:developer';
-
 import 'package:app_new/featuers/auth/sign_up/presentation/controller/sign_up_cubit.dart';
 import 'package:app_new/featuers/auth/sign_up/presentation/controller/sign_up_states.dart';
 import 'package:app_new/featuers/fill_profile/presentation/view/fill_profile_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -99,10 +95,10 @@ class _BodySignUpContainerState extends State<BodySignUpContainer> {
                   if(state is SignUpFailureState){
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       backgroundColor: AppColors.black,
-                        content: Text(state.errorMessage,style: TextStyle(color: AppColors.blue,fontWeight: FontWeight.bold),)));
+                        content: Text(state.errorMessage,style: const TextStyle(color: AppColors.blue,fontWeight: FontWeight.bold),)));
                   }else if(state is SignUpSuccessState){
                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (c){
-                      return FillProfileScreen();
+                      return const FillProfileScreen();
                     }));
                   }
                 },

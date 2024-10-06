@@ -9,10 +9,11 @@ class TopHeadLineCubit extends Cubit<GetTopHeadlineState> {
   final HomePageRepo homePageRepo;
 
   List<NewModel> topHeadLines=[];
-
+  Map<int,List<NewModel>> mapForNews ={};
   Future <void> TopHeaLineFunc(
       {
-        required String category
+        required String category,
+        required int index,
       }
       )async{
     emit(GetTopHeadlineLoadingState());
@@ -26,6 +27,14 @@ class TopHeadLineCubit extends Cubit<GetTopHeadlineState> {
             },
             (right){
               topHeadLines = right;
+
+              mapForNews.addAll({
+
+                index:topHeadLines
+
+              });
+
+
               emit(GetTopHeadlineSuccessState());
             });
 

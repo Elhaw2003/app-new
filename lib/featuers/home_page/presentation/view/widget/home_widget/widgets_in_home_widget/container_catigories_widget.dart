@@ -18,7 +18,8 @@ class ContainerCatigoriesWidget extends StatelessWidget {
     return GestureDetector(
       onTap: (){
         BlocProvider.of<TopHeadLineCubit>(context).TopHeaLineFunc(
-            category: categoryModel.name
+            category: categoryModel.name,
+            index: index
         );
         BlocProvider.of<CategoryCubit>(context).changeIndex(index);
       },

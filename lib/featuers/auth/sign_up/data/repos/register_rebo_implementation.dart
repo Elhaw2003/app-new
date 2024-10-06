@@ -1,3 +1,4 @@
+import 'package:app_new/core/utilies/app_texts.dart';
 import 'package:app_new/featuers/auth/sign_up/data/repos/register_rebo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -37,7 +38,7 @@ class RegisterFirebaseImplementation implements RegisterRebo {
     } catch (e) {
       //   failure
 
-      return left(FirebaseFailure(message: "errorMessage"));
+      return left(FirebaseFailure(message: AppTexts.errorMessage));
 
       // print(e.toString());
     }

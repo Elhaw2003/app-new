@@ -19,7 +19,8 @@ class ItemWidgetForFailure extends StatelessWidget {
           ),
           onTap: (){
             BlocProvider.of<TopHeadLineCubit>(context).TopHeaLineFunc(
-                category: AppTexts.sports
+                category: AppTexts.sports,
+                index: 0,
             );
           },
         ),

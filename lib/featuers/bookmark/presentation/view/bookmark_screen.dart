@@ -4,7 +4,6 @@ import 'package:app_new/featuers/bookmark/presentation/controller/book_mark/book
 import 'package:app_new/featuers/home_page/presentation/view/widget/home_widget/widgets_in_home_widget/list_view_for_news_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 class BookmarkScreen extends StatelessWidget {
   const BookmarkScreen({super.key});
 
@@ -22,9 +21,12 @@ class BookmarkScreen extends StatelessWidget {
                   ),
                 )
             )
-            : ListViewForNewsWidget(
-            news: BlocProvider.of<BookMarkCubit>(context).bookMarks
-        );
+            : Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: ListViewForNewsWidget(
+              news: BlocProvider.of<BookMarkCubit>(context).bookMarks
+                      ),
+            );
       },
     );
   }
