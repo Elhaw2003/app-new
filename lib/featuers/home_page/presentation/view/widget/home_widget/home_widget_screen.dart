@@ -12,6 +12,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../bookmark/presentation/controller/book_mark/book_mark_cubit.dart';
+
 class HomeWidgetScreen extends StatefulWidget {
   const HomeWidgetScreen({super.key});
 
@@ -26,6 +28,7 @@ class _HomeWidgetScreenState extends State<HomeWidgetScreen> {
     BlocProvider.of<TopHeadLineCubit>(context).TopHeaLineFunc(
       category: AppTexts.sports,
       index: 0,
+        bookMarksList: BlocProvider.of<BookMarkCubit>(context).bookMarks
     );
   }
   @override
@@ -38,8 +41,9 @@ class _HomeWidgetScreenState extends State<HomeWidgetScreen> {
         color: AppColors.blue,
         onRefresh: ()async{
           BlocProvider.of<TopHeadLineCubit>(context).TopHeaLineFunc(
-            category: AppTexts.sports,
-            index: 0,
+              category: AppTexts.sports,
+              index: 0,
+              bookMarksList: BlocProvider.of<BookMarkCubit>(context).bookMarks
           );
         },
         child: Column(

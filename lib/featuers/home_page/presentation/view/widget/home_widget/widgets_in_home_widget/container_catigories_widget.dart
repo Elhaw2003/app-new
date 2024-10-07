@@ -1,4 +1,5 @@
 import 'package:app_new/core/utilies/app_colors.dart';
+import 'package:app_new/featuers/bookmark/presentation/controller/book_mark/book_mark_cubit.dart';
 import 'package:app_new/featuers/home_page/presentation/controller/categories/category_cubit.dart';
 import 'package:app_new/featuers/home_page/presentation/controller/categories/category_states.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,8 @@ class ContainerCatigoriesWidget extends StatelessWidget {
       onTap: (){
         BlocProvider.of<TopHeadLineCubit>(context).TopHeaLineFunc(
             category: categoryModel.name,
-            index: index
+            index: index,
+            bookMarksList: BlocProvider.of<BookMarkCubit>(context).bookMarks
         );
         BlocProvider.of<CategoryCubit>(context).changeIndex(index);
       },

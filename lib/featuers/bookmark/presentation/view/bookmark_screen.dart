@@ -24,7 +24,7 @@ class BookmarkScreen extends StatelessWidget {
             : Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: ListViewForNewsWidget(
-              news: BlocProvider.of<BookMarkCubit>(context).bookMarks
+              news: BlocProvider.of<BookMarkCubit>(context).bookMarks.toSet().toList()
                       ),
             );
       },

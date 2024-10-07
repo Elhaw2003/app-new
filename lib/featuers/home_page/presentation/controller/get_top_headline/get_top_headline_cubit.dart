@@ -14,6 +14,7 @@ class TopHeadLineCubit extends Cubit<GetTopHeadlineState> {
       {
         required String category,
         required int index,
+        required List<NewModel> bookMarksList,
       }
       )async{
     emit(GetTopHeadlineLoadingState());
@@ -27,6 +28,15 @@ class TopHeadLineCubit extends Cubit<GetTopHeadlineState> {
             },
             (right){
               topHeadLines = right;
+
+
+              topHeadLines = topHeadLines.map((newsItem){
+
+                if(bookMarksList.any((bookMark)=> bookMark == newsItem)){
+                  newsItem.bookMark = true;
+                }
+                return newsItem;
+              }).toList();
 
               mapForNews.addAll({
 
