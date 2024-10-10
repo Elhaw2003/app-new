@@ -1,10 +1,8 @@
 import 'dart:io';
-import 'package:app_new/featuers/author/presentation/view/author_screen.dart';
 import 'package:app_new/featuers/bookmark/presentation/view/bookmark_screen.dart';
 import 'package:app_new/featuers/home_page/presentation/view/widget/bottom_navigation_bar_widget.dart';
 import 'package:app_new/featuers/home_page/presentation/view/widget/home_page_appbar.dart';
 import 'package:app_new/featuers/home_page/presentation/view/widget/home_widget/home_widget_screen.dart';
-import 'package:app_new/featuers/topics/presentation/view/topics_screen.dart';
 import 'package:flutter/material.dart';
 class HomePageScreen extends StatefulWidget {
    const HomePageScreen({super.key, required this.photo});
@@ -16,7 +14,7 @@ class HomePageScreen extends StatefulWidget {
 
 class _HomePageScreenState extends State<HomePageScreen> {
   int currentIndex = 0;
-  List<Widget> bodysList = [const HomeWidgetScreen(),const TopicsScreen(),const AuthorScreen(),const BookmarkScreen()];
+  List<Widget> bodysList = [const HomeWidgetScreen(),const BookmarkScreen()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

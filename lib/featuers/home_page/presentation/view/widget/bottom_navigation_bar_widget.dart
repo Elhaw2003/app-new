@@ -32,14 +32,6 @@ class BottomNavigationBarWidget extends StatelessWidget {
             ),
             label:AppTexts.home
         ),
-        BottomNavigationBarItem(
-            icon: SvgPicture.asset(AppImages.topicsActiveIcon),
-            label:AppTexts.topics
-        ),
-        BottomNavigationBarItem(
-            icon: SvgPicture.asset(AppImages.authorActiveIcon),
-            label:AppTexts.author
-        ),
         const BottomNavigationBarItem(
             icon: Icon(
                 Icons.bookmark
