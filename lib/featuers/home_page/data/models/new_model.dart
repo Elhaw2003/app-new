@@ -36,6 +36,23 @@ class NewModel extends Equatable{
 
 });
 
+  //(factory)>>بتعالج مشكله ال final و ال variable ال مش ب null
+
+  factory NewModel.fromJson(json){
+    return NewModel(
+        title: json["title"],
+        author: json["title"],
+        desc: json["description"],
+        content: json["content"],
+        urlToImage: json["urlToImage"],
+        url: json["url"],
+        publishedAt: json["publishedAt"],
+        sourceModel: SourceModel(
+            id: json["source"]["id"],
+            name:  json["source"]["name"]
+        ));
+  }
+
   @override
   // TODO: implement props
   List<Object?> get props => [

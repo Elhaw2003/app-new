@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
       const Duration(seconds: 3),
       () {
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) {
-          return const FillProfileScreen();
+          return const SignUpScreen();
         }));
       },
     );

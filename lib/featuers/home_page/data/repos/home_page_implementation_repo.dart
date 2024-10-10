@@ -22,15 +22,7 @@ class HomePageImplementationRepo implements HomePageRepo {
 
       if(response.statusCode == 200) {
         for (var article in jsonDecode(response.body)["articles"]) {
-          NewModel newModel = NewModel(
-              title: article["title"],
-              author: article["title"],
-              desc: article["description"],
-              content: article["content"],
-              urlToImage: article["urlToImage"],
-              url: article["url"],
-              publishedAt: article["publishedAt"],
-              sourceModel: SourceModel(id: article["source"]["id"], name:  article["source"]["name"]));
+          NewModel newModel = NewModel.fromJson(article);
           news.add(newModel);
         }
         return right(news);
