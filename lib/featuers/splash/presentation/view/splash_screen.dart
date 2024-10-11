@@ -1,3 +1,4 @@
+import 'package:app_new/featuers/auth/login/presentation/view/login_screen.dart';
 import 'package:app_new/featuers/auth/sign_up/presentation/view/sign_up_screen.dart';
 import 'package:app_new/featuers/fill_profile/presentation/view/fill_profile_screen.dart';
 import 'package:app_new/featuers/splash/presentation/view/splash_body.dart';
@@ -19,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
       const Duration(seconds: 3),
       () {
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) {
-          return const SignUpScreen();
+          return const LoginScreen();
         }));
       },
     );

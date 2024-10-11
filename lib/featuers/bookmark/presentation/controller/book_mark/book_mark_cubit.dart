@@ -18,10 +18,8 @@ class BookMarkCubit extends Cubit<BookMarkState>{
     newModel.bookMark = !newModel.bookMark;
     if(newModel.bookMark){
       addToBookMark(newModel: newModel);
-      newsBox.add(newModel);
     }else{
       removeFromBookMark(newModel: newModel);
-      newsBox.delete(newModel);
     }
     emit(ChangeBookMarkState());
   }
@@ -30,15 +28,18 @@ class BookMarkCubit extends Cubit<BookMarkState>{
     required NewModel newModel,
 }
       )
-  {
+  async{
     bookMarks.add(newModel);
+    await newsBox.put("${newModel.title}${newModel.publishedAt}", newModel);
   }
   removeFromBookMark(
       {
         required NewModel newModel,
       }
       )
-  {
+  async{
     bookMarks.remove(newModel);
+    //Deletes the given key from the box.
+   await newsBox.delete("${newModel.title}${newModel.publishedAt}");
   }
 }

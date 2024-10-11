@@ -19,7 +19,7 @@ class ItemWidgetForFailure extends StatelessWidget {
             child: Text(AppTexts.tryAgain),
           ),
           onTap: (){
-            BlocProvider.of<TopHeadLineCubit>(context).TopHeaLineFunc(
+            BlocProvider.of<TopHeadLineCubit>(context).TopHeadLineFunc(
                 bookMarksList: BlocProvider.of<BookMarkCubit>(context).bookMarks,
                 category: AppTexts.sports,
                 index: 0,

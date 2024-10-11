@@ -18,7 +18,7 @@ class ContainerCatigoriesWidget extends StatelessWidget {
   builder: (context, state) {
     return GestureDetector(
       onTap: (){
-        BlocProvider.of<TopHeadLineCubit>(context).TopHeaLineFunc(
+        BlocProvider.of<TopHeadLineCubit>(context).TopHeadLineFunc(
             category: categoryModel.name,
             index: index,
             bookMarksList: BlocProvider.of<BookMarkCubit>(context).bookMarks

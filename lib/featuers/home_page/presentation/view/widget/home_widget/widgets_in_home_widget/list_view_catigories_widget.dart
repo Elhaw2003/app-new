@@ -9,7 +9,7 @@ class ListViewCatigoriesWidget extends StatelessWidget {
   List<CateoryModel> categories = [
     CateoryModel(name: AppTexts.sports),
     CateoryModel(name: AppTexts.entertainment),
-    CateoryModel(name: AppTexts.health),
+    // CateoryModel(name: AppTexts.health),
     CateoryModel(name: AppTexts.technology),
     CateoryModel(name: AppTexts.science),
     CateoryModel(name: AppTexts.general),
@@ -19,7 +19,7 @@ class ListViewCatigoriesWidget extends StatelessWidget {
     return SizedBox(
       height: 50,
       child: ListView.separated(
-        separatorBuilder: (context, index) => SizedBox(width: 20,),
+        separatorBuilder: (context, index) => const SizedBox(width: 20,),
         scrollDirection: Axis.horizontal,
           itemCount: categories.length,
           itemBuilder: (context, index) {

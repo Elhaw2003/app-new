@@ -25,7 +25,7 @@ class _HomeWidgetScreenState extends State<HomeWidgetScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    BlocProvider.of<TopHeadLineCubit>(context).TopHeaLineFunc(
+    BlocProvider.of<TopHeadLineCubit>(context).TopHeadLineFunc(
       category: AppTexts.sports,
       index: 0,
         bookMarksList: BlocProvider.of<BookMarkCubit>(context).bookMarks
@@ -40,7 +40,7 @@ class _HomeWidgetScreenState extends State<HomeWidgetScreen> {
       child: RefreshIndicator(
         color: AppColors.blue,
         onRefresh: ()async{
-          BlocProvider.of<TopHeadLineCubit>(context).TopHeaLineFunc(
+          BlocProvider.of<TopHeadLineCubit>(context).TopHeadLineFunc(
               category: AppTexts.sports,
               index: 0,
               bookMarksList: BlocProvider.of<BookMarkCubit>(context).bookMarks
